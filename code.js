@@ -1,17 +1,12 @@
-// window.addEventListener("load", function () {
-//   const script = document.createElement("script");
-//   script.src = "code.js";
-//   document.body.appendChild(script);
-// });
-
-
-
 // Intro
 let intro = document.querySelector(".intro");
 let logo = document.querySelector(".logo-header");
 let logoSpan = document.querySelectorAll(".logo");
 
 window.addEventListener("DOMContentLoaded", () => {
+  const script = document.createElement("script");
+  script.src = "code.js";
+  document.body.appendChild(script);
   logoSpan.forEach((span, idx) => {
     setTimeout(() => {
       span.classList.add("active");
@@ -42,7 +37,7 @@ const lazyLoad = target => {
         const src = img.getAttribute('data-lazy');
 
         img.setAttribute('src', src);
-        img.classList.add('fadeIMG');
+        img.classList.add('fade');
 
         observer.disconnect();
       }
@@ -351,4 +346,66 @@ for (var i = 0; i < ImgList.length; i++){
   ListMusic.appendChild(li);
 
 }
+
+// Mobile
+let nav=document.querySelector('.nav');
+let headerSec= document.querySelector(".header-title");
+let mobileMenu = document.querySelector('#menu-btn-mobile');
+let mobileMenuSec = document.querySelector('.menu-mobile-ct');
+mobileMenu.addEventListener('click', function(e) {
+headerSec.style.display="none";
+mobileMenuSec.style.display="block";
+nav.style.display="none";
+
+});
+let exitBtn= document.querySelector('.icon-exit-menu');
+exitBtn.addEventListener("click", function (e) {
+  mobileMenuSec.style.display="none";
+  nav.style.display="flex";
+  headerSec.style.display="flex";
+});
+let PageNavMobile = document.querySelectorAll(".nav-list");
+PageNavMobile[1].addEventListener("click", function (e) {
+  if (e.target.id == "home") {
+    home.classList.add("appear");
+    about.classList.remove("appear");
+    myBlog.classList.remove("appear");
+    musicPage.classList.remove("appear");
+  }
+  if (e.target.id == "about") {
+    about.classList.add("appear");
+    myBlog.classList.remove("appear");
+    home.classList.remove("appear");
+    musicPage.classList.remove("appear");
+  }
+  if (e.target.id == "myBlog") {
+    myBlog.classList.add("appear");
+    about.classList.remove("appear");
+    home.classList.remove("appear");
+    musicPage.classList.remove("appear");
+  }
+  if (e.target.id == "music") {
+    musicPage.classList.add("appear");
+    about.classList.remove("appear");
+    home.classList.remove("appear");
+    myBlog.classList.remove("appear");
+  }
+  mobileMenuSec.style.display="none";
+  nav.style.display="flex";
+  headerSec.style.display="flex";
+});
+allPost.addEventListener("click", function (e) {
+  myBlog.classList.add("appear");
+    about.classList.remove("appear");
+    home.classList.remove("appear");
+    musicPage.classList.remove("appear");
+});
+
+
+
+
+
+
+
+
 
