@@ -3,20 +3,24 @@
     --border: 0.5px solid black;
     --green: rgba(0, 128, 0, 0.2);
 }
-::-webkit-scrollbar{
-    width:0.7rem;
-}
-::-webkit-scrollbar-track{
-    background-color: rgba(0,0,0,0.1);
-    
-}
-::-webkit-scrollbar-thumb{
-background-color: rgba(0,0,0,0.3);
 
-border-radius: 1rem;
+::-webkit-scrollbar {
+    width: 0.7rem;
 }
-::-webkit-scrollbar-thumb:hover{
-    background-color: rgba(0,0,0,0.4);
+
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+
+    border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 
@@ -37,6 +41,7 @@ span {
 }
 
 ul {
+    padding: 0;
     list-style-type: none;
 }
 
@@ -170,6 +175,9 @@ input[type="search"]::-webkit-search-results-decoration {
 .nav-items:last-child {
     flex-grow: 4;
 }
+.menu-mobile-ct{
+    display: none;
+}
 
 /* Icon's Navigate */
 .icon-nav-sec {
@@ -180,11 +188,18 @@ input[type="search"]::-webkit-search-results-decoration {
 .icon-nav-sec {
     font-size: 22px;
 }
+.menu-btn-mobile{
+    display: none;
+}
 
 .icon:hover {
     cursor: pointer;
     opacity: 0.7;
 }
+
+/* .fa-facebook:hover{
+color:rgb(86, 169, 221) !important;
+} */
 
 
 /*Search Navigation */
@@ -233,7 +248,8 @@ input[type="search"]::-webkit-search-results-decoration {
     border: var(--border);
     cursor: pointer;
 }
-.feature-post-content:hover{
+
+.feature-post-content:hover {
     opacity: 0.7;
 }
 
@@ -279,30 +295,30 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .post-item {
     width: 100%;
-    height: 40vh;
     display: flex;
     border: 0.5px solid gray;
     margin-top: 60px;
     border-right: transparent !important;
     cursor: pointer;
 }
-.post-item:hover{
-    opacity: 0.6;
-}
+
 
 .post-dis-content {
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
     padding: 20px 30px 20px 30px;
 }
 
 .post-item-img {
     width: 40%;
     object-fit: cover;
-    height: 100%;
+    height: auto;
 
 }
 
 .author-sec {
-    margin-top: 0;
+    flex: 0;
 }
 
 .avt-name-sec {
@@ -318,10 +334,12 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .summary-sec {
-    height: 60%;
+    flex: 1;
+
 }
 
 .interactive-sec {
+    padding: 5px;
     border-top: var(--border);
     display: flex;
     align-items: center;
@@ -366,7 +384,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .about-me {
-    width: 50%;
+    flex: 1;
     display: flex;
 }
 
@@ -378,7 +396,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .media-contact {
     display: block;
-    width: 50%;
+    flex: 1;
 }
 
 .contact-icon-list {
@@ -411,25 +429,26 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .about-page-content {
+    display: flex;
     background-color: var(--green);
-    width: 70%;
-    position: relative;
-    padding: 50px;
-
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+    /* color: white; */
 }
 
 .about-der {
-    width: 30%;
+    width: 50%;
     line-height: 1.7rem;
     text-align: justify;
+    padding: 0 50px 0 50px;
 }
 
 .about-img {
-    width: 30%;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translate(-50%, -50%);
+
+    width: 50%;
+
 }
 
 /* my blog */
@@ -482,23 +501,33 @@ input[type="search"]::-webkit-search-results-decoration {
     height: 55vh;
 }
 
-.song-nav {
+.song-nav-container {
     flex: 3.5;
-    overflow: auto;
     border-right: var(--border);
     padding: 10px 15px 7px 15px;
     box-sizing: border-box;
+    height: 100%;
+    overflow: auto;
+}
+
+.song-nav {
+    width: 100%;
+
+
 }
 
 .display-music {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     flex: 7;
-    border-radius: 10px;
     box-sizing: border-box;
     padding: 10px;
     text-align: center;
 }
 
 .music_bg {
+    flex: 1;
     border: 2px solid black;
     width: 40%;
     object-fit: cover;
@@ -596,11 +625,13 @@ input[type="search"]::-webkit-search-results-decoration {
     object-fit: cover;
     position: relative;
     top: 50%;
-    margin-right:1rem;
+    margin-right: 1rem;
 }
-.song-name{
+
+.song-name {
     margin: 3% auto 0 auto;
 }
+
 .song {
     display: flex;
     width: 100%;
@@ -617,8 +648,146 @@ input[type="search"]::-webkit-search-results-decoration {
     }
 
 }
+@keyframes pageUp{
 
-.fade{
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+
+}
+
+.fade {
     transition: all 0.2s;
 }
 
+@media only screen and (max-width: 1024px) {
+    .intro {
+        width: 100vw;
+    }
+
+    .logo-header {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+.nav-list{
+   margin: 0;
+   flex-direction: column;
+
+
+}
+.nav-items:not(.search-nav-sec,.mobile-items){
+    display: none;
+}
+.mobile-items{
+    border:transparent;
+    border-top:var(--border);
+    padding:2rem;
+}
+.mobile-items:first-child{
+    position: relative;
+   
+    border-top: transparent;
+}
+.icon-exit-menu{
+    position: absolute;
+    right:0;
+    padding:1.2rem;
+    top:0;
+
+}
+
+/* .nav-items{
+    border-top:transparent;
+    
+} */
+
+.menu-btn-mobile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: var(--border);
+    width: 25%;
+    z-index: 151;
+}
+.menu-btn-mobile>i{
+    z-index: 150;
+    padding:10px 0 10px 0;
+   
+}
+.menu-mobile-ct{
+    top:0;
+position: sticky;
+z-index: 150;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255,255,255,1);
+    animation: pageUp ease-in 0.35s;
+}
+
+
+    .header-present-words {
+        font-size: 2rem;
+    }
+
+    .header-blog-title {
+        font-size: 4rem;
+    }
+
+    .feature-post-img {
+        height: auto;
+    }
+
+    .home-page-content,
+    .about-page-content,
+    .myblog-page,
+    .contact-page {
+        width: 90%;
+    }
+
+    .about-page-content {
+        flex-direction: column-reverse;
+    }
+
+    .about-img {
+        width: 100%;
+    }
+
+    .about-der {
+        width: 100%;
+    }
+
+    .feature-post-tilte {
+        width: 70%;
+    }
+
+    .post-item {
+        flex-direction: column;
+    }
+
+    .post-item-img {
+        width: 100%;
+    }
+
+    .home-footer {
+        flex-direction: column;
+
+    }
+
+    .icon-contact {
+        width: 50%;
+    }
+    .music-layout{
+        flex-direction: column-reverse;
+        margin-top: 5%;
+        width: 95%;
+        height: 65vh;
+    }
+    .display-music{
+        border-bottom: var(--border);
+    }
+}
